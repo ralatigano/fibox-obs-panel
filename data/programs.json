@@ -1,0 +1,30 @@
+[
+    {
+        "id": "dd06ff43",
+        "name": "FM Espacio",
+        "source": "RadioFMEspacio",
+        "start": "08:00",
+        "end": "10:00",
+        "days": [
+            "lu",
+            "ma",
+            "mi",
+            "ju",
+            "vi"
+        ]
+    },
+    {
+        "id": "439102c5",
+        "name": "Radio San Nicolas",
+        "source": "RadioSanNicolas",
+        "start": "10:00",
+        "end": "13:00",
+        "days": [
+            "lu",
+            "ma",
+            "mi",
+            "ju",
+            "vi"
+        ]
+    }
+]

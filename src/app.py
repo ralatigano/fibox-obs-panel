@@ -6,6 +6,7 @@ from src.modules.ssh_client import SSHClient
 from src.modules.obs_ws import OBSWebSocket
 from src.modules.watchdog_ctrl import WatchdogController
 from src.modules.state_manager import StateManager
+from src.modules.schedule_ui import SchedulerWindow
 from PIL import Image, ImageTk
 
 # Paleta Fibox — oscuro, minimalista
@@ -22,7 +23,7 @@ COLORS = {
     "error":     "#e74c3c",
 }
 
-APP_VERSION = "0.3.0"
+APP_VERSION = "0.3.1"
 
 CONFIG_PATH = os.path.join(os.path.dirname(
     __file__), "..", "config", "settings.json")
@@ -107,6 +108,7 @@ class FiboxApp(ctk.CTk):
         self._section_publicidad(scroll, pad)
         self._section_logs(scroll, pad)
         self._section_visor(scroll, pad)
+        self._section_programacion(scroll, pad)
 
         # Textbox
         self._log_box = ctk.CTkTextbox(
@@ -269,6 +271,11 @@ class FiboxApp(ctk.CTk):
         self._btn(card, "👁  Abrir visor", self._open_viewer).pack(
             anchor="w", padx=12, pady=(0, 12))
 
+    def _section_programacion(self, parent, pad):
+        card = self._card(parent, "📅 Programación")
+        self._btn(card, "📅 Programación del canal", self._open_scheduler).pack(
+            anchor="w", padx=12, pady=(0, 12)
+        )
     # ---------------------------------------------------------------- Lógica --
 
     def _log(self, msg):
@@ -569,3 +576,6 @@ class FiboxApp(ctk.CTk):
         except Exception as e:
             self._log(f"WS error: {e}")
             return {}
+
+    def _open_scheduler(self):
+        SchedulerWindow(self, COLORS)
